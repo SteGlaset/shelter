@@ -1,12 +1,12 @@
 @font-face {
   font-family: "Arial";
-  src: url("/assets/fonts/ArialMT.woff") format("truetype");
+  src: url("/steglaset-JSFE2022Q1/shelter/assets/fonts/ArialMT.woff") format("truetype");
   font-style: normal;
   font-weight: 400;
 }
 @font-face {
   font-family: "Georgia";
-  src: url("/assets/fonts/Georgia.woff") format("truetype");
+  src: url("/steglaset-JSFE2022Q1/shelter/assets/fonts/Georgia.woff") format("truetype");
   font-style: normal;
   font-weight: 400;
 }
@@ -277,7 +277,7 @@ button {
 }
 
 .footer {
-  background: radial-gradient(110.67% 538.64% at 5.73% 50%, rgba(81, 61, 47, 0.3) 0%, rgba(26, 26, 28, 0.3) 100%), url(/assets/images/footer-gradient-background.png) no-repeat;
+  background: radial-gradient(110.67% 538.64% at 5.73% 50%, rgba(81, 61, 47, 0.3) 0%, rgba(26, 26, 28, 0.3) 100%), url(/steglaset-JSFE2022Q1/shelter/assets/images/footer-gradient-background.png) no-repeat;
   background-size: cover;
 }
 
