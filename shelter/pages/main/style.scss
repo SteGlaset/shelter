@@ -72,6 +72,7 @@ button {
 .logo {
     width: 186px;
     height: 60px;
+    margin-top: 42px;
     .logo__title {
         font-family: 'Georgia';
         font-style: normal;
@@ -117,11 +118,16 @@ button {
     font-weight: 400;
     font-size: 15px;
     line-height: 24px;
-    color: $font-not-active-color !important;
+    color: $font-not-active-color;
+    &:hover {
+        color: $font-active-color;
+    }
+    .navigation__item_active & {
+        color: $font-active-color;
+    }
 }
 
 .navigation__item_active {
-    color: $font-active-color;
     border-bottom: 3px solid $outline-color;
 }
 
@@ -158,18 +164,25 @@ button {
 }
 
 .house__btn {
+    display: block;
     width: 207px;
     height: 52px;
     margin-top: 42px;
+    box-sizing: border-box;
     background: #F1CDB3;
     border-radius: 100px;
-    border-color: transparent;
     font-family: 'Georgia';
     font-style: normal;
     font-weight: 400;
     font-size: 17px;
     line-height: 130%;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.059em;
+    padding: 15px 45px;
+    color: #292929;
+    &:hover {
+        background: #f8ddca;
+        transition: all 0.3s;
+    }
 }
 
 .house__img {
@@ -247,6 +260,10 @@ button {
     background: transparent;
     padding-top: 12px;
     display: inline-block;
+    &:hover {
+        background: #F1CDB3;
+        transition: all 0.1s;
+    }
 }
 
 .btn__left {
@@ -265,6 +282,18 @@ button {
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     border-radius: 9px 9px 0px 0px;
     flex-direction: column;
+    &:hover {
+        cursor: pointer;
+        background: #0D0D0D0A;
+        & > .card__btn {
+            background: #F1CDB3;
+            border-color: #F1CDB3;
+            &:hover {
+                background: #FDDCC4;
+                border-color: #FDDCC4;;
+            }
+        }
+    }
 }
 
 .card__img {
@@ -306,7 +335,7 @@ button {
 
 .friends__btn {
     display: block;
-    padding: 15px 35px;
+    padding: 16px 44px;
     width: 261px;
     height: 52px;
     background: #F1CDB3;
@@ -320,6 +349,10 @@ button {
     line-height: 130%;
     letter-spacing: 0.06em;
     color: #292929;
+    &:hover {
+        background: #FDDCC4;
+        transition: all 0.1s;
+    }
 }
 
 //help
