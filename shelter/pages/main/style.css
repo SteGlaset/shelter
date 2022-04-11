@@ -1,12 +1,12 @@
 @font-face {
   font-family: "Arial";
-  src: url("/assets/fonts/ArialMT.woff") format("truetype");
+  src: url("/steglaset-JSFE2022Q1/shelter/assets/fonts/ArialMT.woff") format("truetype");
   font-style: normal;
   font-weight: 400;
 }
 @font-face {
   font-family: "Georgia";
-  src: url("/assets/fonts/Georgia.woff") format("truetype");
+  src: url("/steglaset-JSFE2022Q1/shelter/assets/fonts/Georgia.woff") format("truetype");
   font-style: normal;
   font-weight: 400;
 }
