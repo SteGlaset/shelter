@@ -1,12 +1,12 @@
 @font-face {
   font-family: "Arial";
-  src: url("/assets/fonts/ArialMT.woff") format("truetype");
+  src: url("./../../assets/fonts/ArialMT.woff") format("truetype");
   font-style: normal;
   font-weight: 400;
 }
 @font-face {
   font-family: "Georgia";
-  src: url("/assets/fonts/Georgia.woff") format("truetype");
+  src: url("./../../assets/fonts/Georgia.woff") format("truetype");
   font-style: normal;
   font-weight: 400;
 }
@@ -40,11 +40,10 @@ button {
 
 .header__container {
   display: flex;
-  height: 60px;
+  height: 120px;
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 13px;
   position: fixed;
   z-index: 9;
   background: #FFFFFF;
@@ -54,14 +53,14 @@ button {
 .logo {
   width: 186px;
   height: 60px;
-  padding: 1px 0;
+  margin-bottom: -6px;
 }
 .logo .logo__title {
   font-family: "Georgia";
   font-style: normal;
   font-weight: 400;
   font-size: 32px;
-  line-height: 8px;
+  line-height: 9px;
   letter-spacing: 0.06em;
   color: #545454;
 }
@@ -80,7 +79,6 @@ button {
 .navigation__list {
   display: flex;
   align-content: center;
-  padding-top: 8px;
   margin-right: 3px;
 }
 
@@ -277,7 +275,7 @@ button {
 }
 
 .footer {
-  background: radial-gradient(110.67% 538.64% at 5.73% 50%, rgba(81, 61, 47, 0.3) 0%, rgba(26, 26, 28, 0.3) 100%), url(/assets/images/footer-gradient-background.png) no-repeat;
+  background: radial-gradient(110.67% 538.64% at 5.73% 50%, rgba(81, 61, 47, 0.3) 0%, rgba(26, 26, 28, 0.3) 100%), url(./../../assets/images/footer-gradient-background.png) no-repeat;
   background-size: cover;
 }
 
