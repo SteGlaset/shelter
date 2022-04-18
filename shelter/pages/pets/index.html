@@ -12,7 +12,7 @@
 </head>
 <body>
     <header class="header">
-        <div class="header__container">
+        <div class="container header__container">
             <a href="./../main/index.html" class="tomain">
                 <div class="logo">
                     <h1 class="logo__title">Cozy House</h1>
@@ -24,9 +24,40 @@
                     <li class="navigation__item"><a href="./../main/index.html" class="nav__link">About the
                             shelter</a></li>
                     <li class="navigation__item"><a href="" class="nav__link navigation__item_active">Our pets</a></li>
-                    <li class="navigation__item"><a href="./../main/index.html#donation" class="nav__link">Help the shelter</a></li>
+                    <li class="navigation__item"><a href="./../main/index.html#help" class="nav__link">Help the shelter</a></li>
                     <li class="navigation__item"><a href="#footer" class="nav__link">Contacts</a></li>
                 </ul>
+
+                <div class="hamburger-menu">
+                    <input id="menu__toggle" type="checkbox" />
+                    <label class="menu__btn" for="menu__toggle">
+                      <span>
+                        <svg class="menu__icon" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="24" y1="30" x2="24" stroke="#000000" stroke-width="2"/>
+                            <line x1="14" y1="30" x2="14" stroke="#000000" stroke-width="2"/>
+                            <line x1="4" y1="30" x2="4" stroke="#000000" stroke-width="2"/>
+                        </svg>
+                      </span>
+                    </label>
+
+                    <div class="menu__box">
+                        <div class="menu__header">
+                            <a href="./../main/index.html" class="tomain">
+                                <div class="logo">
+                                    <h1 class="logo__title">Cozy House</h1>
+                                    <span class="logo__description">Shelter for pets in Boston</span>
+                                </div>
+                            </a>
+                        </div>
+                        <ul class="navigation__list navigation__list_burger">
+                            <li class="navigation__item navigation__item_burger"><a href="./../main/index.html" class="nav__link">About the
+                                shelter</a></li>
+                            <li class="navigation__item navigation__item_active navigation__item_burger"><a href="" class="nav__link">Our pets</a></li>
+                            <li class="navigation__item navigation__item_burger"><a href="./../main/index.html#help" class="nav__link">Help the shelter</a></li>
+                            <li class="navigation__item navigation__item_burger"><a href="#footer" class="nav__link">Contacts</a></li>
+                        </ul>
+                    </div>
+                  </div>
             </nav>
         </div>
         </div>  
@@ -89,7 +120,7 @@
                             </svg>
                             
                     </a>
-                    <a class="pagination__number active" href="#">1</a>
+                    <a class="pagination__number active">1</a>
                     <a class="pagination__arrow active" href="#">
                         <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9.04102 6.08789L0.0078125 10.7852V9.44727L7.51758 5.53125L0.0078125 1.625V0.287109L9.04102 4.98438V6.08789Z" fill="#CDCDCD"/>
