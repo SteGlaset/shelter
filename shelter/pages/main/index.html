@@ -5,19 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-=======
-    <base target="C:\Users\stegl\Desktop\rs-school">
->>>>>>> f882c9566ad9dd3a6a5bcdda8f140b84518c4cd5
     <link rel="stylesheet" href="./../normalize.css">
     <link rel="stylesheet" href="./../reset.css">
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./script.js">
     <title>Cozy House</title>
 </head>
 
 <body>
+    
     <header class="header">
+        <div id="invinsible__link"></div>
         <div class="start-screen__container">
             <div class="container header__container">
                 <a href="" class="tomain">
@@ -109,33 +106,95 @@
                 <h3 class="title friends__title">
                     <p>Our friends who</p> are looking for a house
                 </h3>
-                <ul class="friends__list">
-                    <button class="btn__left"><img src="./../../assets/icons/Arrow-l.svg" alt=""></button>
-                    <li class="friends__card">
-                        <img src="./../../assets/images/pets-katrine.webp" alt="Katrine" class="card__img">
-                        <h4 class="card__title">Katrine</h4>
-                        <button class="card__btn">Learn more</button>
-                    </li>
-                    <li class="friends__card">
-                        <img src="./../../assets/images/pets-jennifer.webp" alt="Jennifer" class="card__img">
-                        <h4 class="card__title">Jennifer</h4>
-                        <button class="card__btn">Learn more</button>
-                    </li>
-                    <li class="friends__card">
-                        <img src="./../../assets/images/pets-woody.webp" alt="Woody" class="card__img">
-                        <h4 class="card__title">Woody</h4>
-                        <button class="card__btn">Learn more</button>
-                    </li>
-                    <button class="btn__right"><img src="./../../assets/icons/Arrow-r.svg" alt=""></button>
-                </ul>
+                <div class="cards__wrapper">
+                    <button class="btn__left" id="btn__left"><img src="./../../assets/icons/Arrow-l.svg" alt=""></button>
+                    <div class="friends__list" id="friends__list">
+                        <ul class="friends__cards" id="friends__cards">
+                            <a href="#popup" class="popup__link">
+                                <li class="friends__card">
+                                    <img src="./../../assets/images/pets-katrine.webp" alt="Katrine" class="card__img">
+                                    <h4 class="card__title">Katrine</h4>
+                                    <button class="card__btn">Learn more</button>
+                                </li>
+                            </a>
+                            <a href="#popup" class="popup__link">
+                                <li class="friends__card">
+                                    <img src="./../../assets/images/pets-jennifer.webp" alt="Jennifer" class="card__img">
+                                    <h4 class="card__title">Jennifer</h4>
+                                    <button class="card__btn">Learn more</button>
+                                </li>
+                            </a>
+                            <a href="#popup" class="popup__link">
+                                <li class="friends__card">
+                                    <img src="./../../assets/images/pets-woody.webp" alt="Woody" class="card__img">
+                                    <h4 class="card__title">Woody</h4>
+                                    <button class="card__btn">Learn more</button>
+                                </li>
+                            </a>
+                            <a href="#popup" class="popup__link">
+                                <li class="friends__card">
+                                    <img src="./../../assets/images/pets-sophia.webp" alt="Sophia" class="card__img">
+                                    <h4 class="card__title">Sophia</h4>
+                                    <button class="card__btn">Learn more</button>
+                                </li>
+                            </a>
+                            <a href="#popup" class="popup__link">
+                                <li class="friends__card">
+                                    <img src="./../../assets/images/pets-timmy.webp" alt="Timmy" class="card__img">
+                                    <h4 class="card__title">Timmy</h4>
+                                    <button class="card__btn">Learn more</button>
+                                </li>
+                            </a>
+                            <a href="#popup" class="popup__link">
+                                <li class="friends__card">
+                                    <img src="./../../assets/images/pets-charly.webp" alt="Charly" class="card__img">
+                                    <h4 class="card__title">Charly</h4>
+                                    <button class="card__btn">Learn more</button>
+                                </li>
+                            </a>
+                            <a href="#popup" class="popup__link">
+                                <li class="friends__card">
+                                    <img src="./../../assets/images/pets-scarlett.webp" alt="Scarlett" class="card__img">
+                                    <h4 class="card__title">Scarlett</h4>
+                                    <button class="card__btn">Learn more</button>
+                                </li>
+                            </a>
+                            <a href="#popup" class="popup__link">
+                                <li class="friends__card">
+                                    <img src="./../../assets/images/pets-freddie.webp" alt="Freddie" class="card__img">
+                                    <h4 class="card__title">Freddie</h4>
+                                    <button class="card__btn">Learn more</button>
+                                </li>
+                            </a>
+                            <a href="#popup" class="popup__link">
+                                <li class="friends__card">
+                                    <img src="./../../assets/images/pets-katrine.webp" alt="Katrine" class="card__img">
+                                    <h4 class="card__title">Katrine</h4>
+                                    <button class="card__btn">Learn more</button>
+                                </li>
+                            </a>
+                        </ul>  
+                    </div>
+                    <button class="btn__right" id="btn__right"><img src="./../../assets/icons/Arrow-r.svg" alt=""></button>
+                </div>
+                <div class="popup" id="popup">
+                    <a href="#invinsible__link" class="popup__area"></a>
+                    <div class="popup__body">
+                        <div class="popup__content">
+                            <a href="#invinsible__link" class="popup__close"><img src="./../../assets/icons/Vector.svg" class="popup__icon" alt=""></a>
+                            <img src="" alt="" class="popup__img">
+                            <div class="popup__text">
+                                <h3 class="popup__title"></h3>
+                                <h4 class="popup__subtitle"></h4>
+                                <p class="popup__description"></p>
+                                <ul class="popup__list">
+                                    <li class="popup__item"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <a href="./../pets/index.html" class="btn friends__btn" target="_self">Get to know the rest</a>
-                        <img src="/steglaset-JSFE2022Q1/shelter/assets/images/pets-woody.png" alt="Woody" class="card__img">
-                        <h4 class="card__title">Woody</h4>
-                        <button class="card__btn">Learn more</button>
-                    </li>
-                    <button class="btn__right"><img src="/steglaset-JSFE2022Q1/shelter/assets/icons/Arrow-r.svg" alt=""></button>
-                </ul>
-                <a href="/steglaset-JSFE2022Q1/shelter/pages/pets/index.html" class="btn friends__btn">Get to know the rest</a>
             </div>
         </section>
         <section id="help" class="help">
@@ -250,5 +309,7 @@
         </div>
     </footer>
 </body>
+
+<script type ="text/javascript" src="./script.js"></script>
 
 </html>

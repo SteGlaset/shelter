@@ -16,7 +16,6 @@
 
 html {
   font-size: 10px;
-  overflow-x: hidden;
 }
 
 .container {
@@ -74,6 +73,10 @@ button {
   padding: 54px 0;
   justify-content: space-between;
   align-items: center;
+}
+
+#invinsible__link {
+  position: fixed;
 }
 
 .logo {
@@ -220,14 +223,12 @@ button {
   #menu__toggle:checked ~ .menu__box {
     visibility: visible;
     opacity: 1;
-    right: 20px;
   }
   #menu__toggle:checked ~ .menu__btn > span > .menu__icon {
     transform: rotate(0deg);
   }
   #menu__toggle:checked ~ .menu__btn.menu__btn {
     position: fixed;
-    right: 73px;
   }
 
   .menu__icon {
@@ -467,10 +468,15 @@ button {
   text-align: center;
 }
 
-.friends__list {
+.cards__wrapper {
   display: flex;
   align-items: center;
+}
+
+.friends__list {
+  display: flex;
   margin: auto;
+  overflow: hidden;
 }
 
 .btn__left,
@@ -496,6 +502,61 @@ button {
 
 .btn__right {
   margin-left: 8px;
+}
+
+.friends__cards {
+  display: flex;
+  position: relative;
+  width: 1080px;
+  right: 1080px;
+}
+
+@-webkit-keyframes move-right {
+  from {
+    right: 1080px;
+  }
+  to {
+    right: 2160px;
+  }
+}
+
+@keyframes move-right {
+  from {
+    right: 1080px;
+  }
+  to {
+    right: 2160px;
+  }
+}
+.transition-right {
+  -webkit-animation-name: move-right;
+          animation-name: move-right;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}
+
+@-webkit-keyframes move-left {
+  from {
+    right: 1080px;
+  }
+  to {
+    right: 0;
+  }
+}
+
+@keyframes move-left {
+  from {
+    right: 1080px;
+  }
+  to {
+    right: 0;
+  }
+}
+.transition-left {
+  -webkit-animation-name: move-left;
+          animation-name: move-left;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
 }
 
 .friends__card {
@@ -578,25 +639,128 @@ button {
   transition: all 0.1s;
 }
 
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(41, 41, 41, 0.6);
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: all 0.5s ease;
+}
+.popup:target {
+  opacity: 1;
+  visibility: visible;
+}
+.popup:target .popup__content {
+  transform: perspective(600px) translate(0px, 0px) rotateX(0deg);
+  opacity: 1;
+}
+
+.popup__area {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.popup__body {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.popup__content {
+  width: 900px;
+  min-height: 500px;
+  background: #FAFAFA;
+  box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+  position: relative;
+  transition: all 0.5s ease;
+  opacity: 0;
+  transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+}
+
+.popup__close {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 890px;
+  top: -52px;
+  width: 52px;
+  height: 52px;
+  border: 2px solid #F1CDB3;
+  border-radius: 100px;
+}
+
+.popup__icon {
+  width: 12px;
+  height: 12px;
+}
+
 @media (max-width: 1280px) {
   .friends__card {
-    margin: 60px calc(3.515625vw - 27px);
-  }
-
-  .friends__card:nth-last-child(-n+2) {
-    display: none;
+    margin: 60px 0;
   }
 
   .friends__card:nth-child(n+1) {
-    margin-right: 5.2083333333vw;
+    margin-right: 40.937px;
   }
 
   .btn__left {
-    margin-right: 1.5625vw;
+    margin-right: 2px;
   }
 
   .btn__right {
-    margin-left: 1.5625vw;
+    margin-left: 2px;
+  }
+
+  .friends__cards {
+    width: 600px;
+    padding: 0 10px;
+    right: 620px;
+  }
+
+  @-webkit-keyframes move-right {
+    from {
+      right: 620px;
+    }
+    to {
+      right: 1242px;
+    }
+  }
+
+  @keyframes move-right {
+    from {
+      right: 620px;
+    }
+    to {
+      right: 1242px;
+    }
+  }
+  @-webkit-keyframes move-left {
+    from {
+      right: 620px;
+    }
+    to {
+      right: -2px;
+    }
+  }
+  @keyframes move-left {
+    from {
+      right: 620px;
+    }
+    to {
+      right: -2px;
+    }
   }
 }
 @media (max-width: 975px) {
@@ -623,17 +787,61 @@ button {
     letter-spacing: 0.06em;
   }
 
-  .friends__list {
+  .cards__wrapper {
     flex-wrap: wrap;
     justify-content: center;
+    overflow: hidden;
   }
 
+  .friends__list {
+    justify-items: center;
+  }
+
+  .friends__cards {
+    width: 310px;
+    padding: 0;
+    right: 316px;
+  }
+
+  @-webkit-keyframes move-right {
+    from {
+      right: 316px;
+    }
+    to {
+      right: 618px;
+    }
+  }
+
+  @keyframes move-right {
+    from {
+      right: 316px;
+    }
+    to {
+      right: 618px;
+    }
+  }
+  @-webkit-keyframes move-left {
+    from {
+      right: 313px;
+    }
+    to {
+      right: 13px;
+    }
+  }
+  @keyframes move-left {
+    from {
+      right: 313px;
+    }
+    to {
+      right: 13px;
+    }
+  }
   .friends__card:nth-child(n+1) {
     margin-right: auto;
   }
 
   .friends__card {
-    margin: 0 auto 20px;
+    margin: 0 33px 20px;
     justify-self: center;
   }
 
@@ -678,7 +886,7 @@ button {
 }
 
 .help-item {
-  margin: 0 60px 55px 60px;
+  margin: 0 60px 55px;
 }
 
 .item__wrapper {
@@ -716,7 +924,7 @@ button {
   }
 
   .help-item {
-    margin: 0 30px 55px 30px;
+    margin: 0 30px 55px;
   }
 }
 @media (max-width: 671px) {
@@ -736,7 +944,8 @@ button {
 
   .help__list {
     justify-content: space-between;
-    padding: 0 35px;
+    margin: 0;
+    padding: 0 5px;
   }
 
   .item__wrapper {

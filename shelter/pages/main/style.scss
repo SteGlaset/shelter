@@ -25,7 +25,6 @@ $outline-color: #F1CDB3;
 
 html {
     font-size: 10px;
-    overflow-x: hidden;
 }
 
 .container {
@@ -89,8 +88,13 @@ button {
     align-items: center;
 }
 
+#invinsible__link {
+    position: fixed;
+}
+
 .logo {
     width: 186px;
+
     .logo__title {
         font-family: 'Georgia';
         font-style: normal;
@@ -123,6 +127,7 @@ button {
 
 .navigation__item {
     margin-right: 35px;
+
     &:last-child {
         margin-right: 0;
     }
@@ -239,7 +244,6 @@ button {
         &~.menu__box {
             visibility: visible;
             opacity: 1;
-            right: 20px;
         }
 
         &~.menu__btn {
@@ -249,7 +253,7 @@ button {
 
             &.menu__btn {
                 position: fixed;
-                right: 73px;
+                //right: 73px;
             }
         }
     }
@@ -505,10 +509,15 @@ button {
     text-align: center;
 }
 
-.friends__list {
+.cards__wrapper {
     display: flex;
     align-items: center;
+}
+
+.friends__list {
+    display: flex;
     margin: auto;
+    overflow: hidden;
 }
 
 .btn__left,
@@ -534,6 +543,43 @@ button {
 
 .btn__right {
     margin-left: 8px;
+}
+
+.friends__cards {
+    display: flex;
+    position: relative;
+    width: 1080px;
+    right: 1080px;
+}
+
+@keyframes move-right {
+    from {
+        right: 1080px;
+    }
+
+    to {
+        right: 2160px;
+    }
+}
+
+.transition-right {
+    animation-name: move-right;
+    animation-duration: 2s;
+}
+
+@keyframes move-left {
+    from {
+        right: 1080px;
+    }
+
+    to {
+        right: 0;
+    }
+}
+
+.transition-left {
+    animation-name: move-left;
+    animation-duration: 2s;
 }
 
 .friends__card {
@@ -622,25 +668,122 @@ button {
     }
 }
 
+.popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(41, 41, 41, 0.6);
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all .5s ease;
+    &:target {
+        opacity: 1;
+        visibility: visible;
+        & .popup__content {
+            transform: perspective(600px) translate(0px, 0px) rotateX(0deg);
+            opacity: 1;
+        }
+    }
+}
+
+.popup__area {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.popup__body {
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.popup__content {
+    width: 900px;
+    min-height: 500px;
+    background: #FAFAFA;
+    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+    position: relative;
+    transition: all .5s ease;
+    opacity: 0;
+    transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+}
+
+.popup__close {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 890px;
+    top: -52px;
+    width: 52px;
+    height: 52px;
+    border: 2px solid #F1CDB3;
+    border-radius: 100px;
+}
+
+.popup__icon {
+    width: 12px;
+    height: 12px;
+}
+
+.popup__text {
+
+}
+
+.popup__title {
+
+}
+
 @media (max-width: 1280px) {
     .friends__card {
-        margin: 60px calc(3.515625vw - 27px);
-    }
-
-    .friends__card:nth-last-child(-n+2) {
-        display: none;
+        margin: 60px 0;
     }
 
     .friends__card:nth-child(n+1) {
-        margin-right: 5.20833333333333vw;
+        margin-right: 40.937px;
     }
 
     .btn__left {
-        margin-right: 1.5625vw;
+        margin-right: 2px;
     }
 
     .btn__right {
-        margin-left: 1.5625vw;
+        margin-left: 2px;
+    }
+
+    .friends__cards {
+        width: 600px;
+        padding: 0 10px;
+        right: 620px;
+    }
+    
+    @keyframes move-right {
+        from {
+            right: 620px;
+        }
+    
+        to {
+            right: 1242px;
+        }
+    }
+    
+    @keyframes move-left {
+        from {
+            right: 620px;
+        }
+    
+        to {
+            right: -2px;
+        }
     }
 }
 
@@ -657,7 +800,6 @@ button {
 @media (max-width: 767px) {
     .friends__container {
         padding: 42px 0;
-
         width: 300px;
     }
 
@@ -670,9 +812,40 @@ button {
         letter-spacing: 0.06em;
     }
 
-    .friends__list {
+    .cards__wrapper {
         flex-wrap: wrap;
         justify-content: center;
+        overflow: hidden;
+    }
+
+    .friends__list {
+        justify-items: center;
+    }
+
+    .friends__cards {
+        width: 310px;
+        padding: 0;
+        right: 316px;
+    }
+    
+    @keyframes move-right {
+        from {
+            right: 316px;
+        }
+    
+        to {
+            right: 618px;
+        }
+    }
+    
+    @keyframes move-left {
+        from {
+            right: 313px;
+        }
+    
+        to {
+            right: 13px;
+        }
     }
 
     .friends__card:nth-child(n+1) {
@@ -680,7 +853,7 @@ button {
     }
 
     .friends__card {
-        margin: 0 auto 20px;
+        margin: 0 33px 20px;
         justify-self: center;
     }
 
@@ -727,7 +900,7 @@ button {
 }
 
 .help-item {
-    margin: 0 60px 55px 60px;
+    margin: 0 60px 55px;
 }
 
 .item__wrapper {
@@ -765,7 +938,7 @@ button {
     }
 
     .help-item {
-        margin: 0 30px 55px 30px;
+        margin: 0 30px 55px;
     }
 }
 
@@ -786,7 +959,8 @@ button {
 
     .help__list {
         justify-content: space-between;
-        padding: 0 35px;
+        margin: 0;
+        padding: 0 5px;
     }
 
     .item__wrapper {
@@ -1080,7 +1254,7 @@ div.footer-item__text {
     .footer__right-col {
         margin: 0;
         width: 100%;
-        height: auto;  
+        height: auto;
     }
 
     .footer__left-col {

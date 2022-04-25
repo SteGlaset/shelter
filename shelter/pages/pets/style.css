@@ -158,7 +158,7 @@ button {
     position: absolute;
     width: 30px;
     height: 22px;
-    right: 63px;
+    right: 53px;
     top: 45px;
     cursor: pointer;
     z-index: 3;
@@ -218,7 +218,6 @@ button {
   #menu__toggle:checked ~ .menu__box {
     visibility: visible;
     opacity: 1;
-    right: 10px;
   }
   #menu__toggle:checked ~ .menu__btn > span > .menu__icon {
     transform: rotate(0deg);
@@ -366,9 +365,11 @@ button {
   border: 2px solid #CDCDCD;
   box-sizing: border-box;
   border-radius: 100px;
+  cursor: auto;
 }
 .pagination__arrow.active {
   border-color: #F1CDB3;
+  cursor: pointer;
 }
 .pagination__arrow.active svg path {
   fill: #292929;
@@ -376,9 +377,6 @@ button {
 .pagination__arrow.active:hover {
   background: #F1CDB3;
   transition: all 0.1s;
-}
-.pagination__arrow.disabled {
-  cursor: auto;
 }
 
 .pagination__arrow, .pagination__number {
@@ -406,6 +404,73 @@ button {
   cursor: pointer;
 }
 
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(41, 41, 41, 0.6);
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: all 0.5s ease;
+}
+.popup:target {
+  opacity: 1;
+  visibility: visible;
+}
+.popup:target .popup__content {
+  transform: perspective(600px) translate(0px, 0px) rotateX(0deg);
+  opacity: 1;
+}
+
+.popup__area {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.popup__body {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.popup__content {
+  width: 900px;
+  min-height: 500px;
+  background: #FAFAFA;
+  box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+  position: relative;
+  transition: all 0.5s ease;
+  opacity: 0;
+  transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+}
+
+.popup__close {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 890px;
+  top: -52px;
+  width: 52px;
+  height: 52px;
+  border: 2px solid #F1CDB3;
+  border-radius: 100px;
+}
+
+.popup__icon {
+  width: 12px;
+  height: 12px;
+}
+
 @media (max-width: 1315px) {
   .friends__card:nth-child(n+7) {
     display: none;
@@ -414,10 +479,6 @@ button {
 @media (max-width: 982px) {
   .friends__container {
     padding-bottom: 76px;
-  }
-
-  .friends__title {
-    font-size: 25px;
   }
 
   .friends__list {
@@ -430,8 +491,12 @@ button {
     padding-bottom: 42px;
   }
 
+  .friends__title {
+    font-size: 25px;
+  }
+
   .friends__list {
-    margin: 26px -20px 26px;
+    margin: 26px 0 26px;
   }
 
   .friends__card:nth-child(n+4) {
