@@ -14,6 +14,7 @@
 <body>
     
     <header class="header">
+        
         <div id="invinsible__link"></div>
         <div class="start-screen__container">
             <div class="container header__container">
@@ -33,7 +34,7 @@
                     </ul>
 
                     <div class="hamburger-menu">
-                        <input id="menu__toggle" type="checkbox" />
+                        <input id="menu__toggle" type="checkbox"/>
                         <label class="menu__btn" for="menu__toggle">
                           <span>
                             <svg class="menu__icon" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,28 +44,31 @@
                             </svg>
                           </span>
                         </label>
-
-                        <div class="menu__box">
-                            <div class="menu__header">
-                                <a href="" class="tomain">
-                                    <div class="logo">
-                                        <h1 class="logo__title">Cozy House</h1>
-                                        <span class="logo__description">Shelter for pets in Boston</span>
-                                    </div>
-                                </a>
+                        <label class="dark__area" for="menu__toggle"></label>
+                            <div class="menu__box">
+                                <div class="menu__header">
+                                    <a href="" class="tomain">
+                                        <div class="logo">
+                                            <h1 class="logo__title">Cozy House</h1>
+                                            <span class="logo__description">Shelter for pets in Boston</span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <ul class="navigation__list navigation__list_burger">
+                                    <li class="navigation__item navigation__item_active navigation__item_burger"><a href="" class="nav__link">About the
+                                        shelter</a></li>
+                                    <li class="navigation__item navigation__item_burger"><a href="./../pets/index.html" class="nav__link">Our pets</a></li>
+                                    <li class="navigation__item navigation__item_burger"><a href="#help" class="nav__link">Help the shelter</a></li>
+                                    <li class="navigation__item navigation__item_burger"><a href="#footer" class="nav__link">Contacts</a></li>
+                                </ul>
                             </div>
-                            <ul class="navigation__list navigation__list_burger">
-                                <li class="navigation__item navigation__item_active navigation__item_burger"><a href="" class="nav__link">About the
-                                    shelter</a></li>
-                                <li class="navigation__item navigation__item_burger"><a href="./../pets/index.html" class="nav__link">Our pets</a></li>
-                                <li class="navigation__item navigation__item_burger"><a href="#help" class="nav__link">Help the shelter</a></li>
-                                <li class="navigation__item navigation__item_burger"><a href="#footer" class="nav__link">Contacts</a></li>
-                            </ul>
-                        </div>
-                      </div>
+                        
+                    </div>
                 </nav>
             </div>
+            
             <section class="house">
+                
                 <div class="container house__container">
                     <div class="house__left">
                         <h2 class="title house__title">Not only people need a house</h2>
@@ -188,7 +192,10 @@
                                 <h4 class="popup__subtitle"></h4>
                                 <p class="popup__description"></p>
                                 <ul class="popup__list">
-                                    <li class="popup__item"></li>
+                                    <li class="popup__item age">Age: <span class="text_regular"></span></li>
+                                    <li class="popup__item inoculations">Inoculations: <span class="text_regular"></span></li>
+                                    <li class="popup__item diseases">Diseases: <span class="text_regular"></span></li>
+                                    <li class="popup__item parasites">Parasites: <span class="text_regular"></span></li>
                                 </ul>
                             </div>
                         </div>

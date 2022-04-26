@@ -30,7 +30,7 @@ const CARDS = [
     <button class='card__btn'>Learn more</button>`
 ]
 let cardsOnScreen = window.innerWidth > '1315' ? 8 :
-window.innerWidth <= '1315' && window.innerWidth > '618' ? 6 : 3;
+    window.innerWidth <= '1315' && window.innerWidth > '618' ? 6 : 3;
 let cardsArr = [];
 let CARDScpy = [];
 const MAXPAGES = Math.trunc(48 / cardsOnScreen);
@@ -44,7 +44,7 @@ let screenNum = 1;
 
 const moveNext = () => {
     event.preventDefault();
-    for (let i = 1 ; i < cardsOnScreen + 1; i++) {
+    for (let i = 1; i < cardsOnScreen + 1; i++) {
         document.querySelector(`.popup__link:nth-child(${i}) .friends__card`).innerHTML = cardsArr[i + cardsOnScreen * screenNum - 1];
     }
     screenNum++;
@@ -109,32 +109,96 @@ checkStatus();
 
 //Popup
 const POPUPAREA = document.querySelector(".popup__area");
-    const BODY = document.querySelector("html");
-    const POPUPLINK = document.querySelectorAll(".popup__link");
-    const POPUPCLOSE = document.querySelector(".popup__close");
-    /* const bodyLock() {
-        const lockPaddingValue = window.innerWidth - POPUP.offsetWidth + 'px';
+const BODY = document.querySelector("html");
+const POPUPLINK = document.querySelectorAll(".popup__link");
+const POPUPCLOSE = document.querySelector(".popup__close");
+/* const bodyLock() {
+    const lockPaddingValue = window.innerWidth - POPUP.offsetWidth + 'px';
 
-        for (let i = 0; i < lockPadding.length; i++) {
-            const el = lockPadding[i];
-            el.style.paddingRight = lockPaddingValue;
+    for (let i = 0; i < lockPadding.length; i++) {
+        const el = lockPadding[i];
+        el.style.paddingRight = lockPaddingValue;
+    }
+    BODY.style.paddingRight = lockPaddingValue;
+    BODY.style.overflow = "hidden";
+    
+    inlock = false;
+    setTimeout(function () {
+        unlock = true;
+    }, timeout)
+} */
+
+BODY.style.paddingRight = "0px"
+let div = document.createElement('div');
+
+div.style.overflowY = 'scroll';
+div.style.width = '50px';
+div.style.height = '50px';
+
+document.body.append(div);
+let scrollWidth = div.offsetWidth - div.clientWidth + "px";
+div.remove();
+
+const toggleBodyLock = () => {
+    BODY.style.paddingRight = BODY.style.paddingRight == "0px" ? scrollWidth : "0px";
+}
+
+POPUPLINK.forEach(el => el.addEventListener("click", () => {
+    BODY.style.overflow = "hidden";
+    toggleBodyLock();
+}));
+
+POPUPAREA.addEventListener("click", () => {
+    BODY.style.overflow = "auto";
+    toggleBodyLock();
+});
+
+POPUPCLOSE.addEventListener("click", () => {
+    BODY.style.overflow = "auto";
+    toggleBodyLock();
+});
+
+
+const BURGERLINK = document.querySelectorAll(".navigation__item_burger .nav__link");
+const BURGERCHECKBOX = document.querySelector("#menu__toggle");
+
+BURGERLINK.forEach(el => {
+    el.addEventListener("click", () => {
+        BURGERCHECKBOX.checked = !BURGERCHECKBOX.checked;
+    })
+
+    el.addEventListener("click", () => {
+        BODY.style.overflow = BODY.style.overflow == "hidden" ? "auto" : "hidden";
+        toggleBodyLock();
+    });
+});
+
+BURGERCHECKBOX.addEventListener("click", () => {
+    BODY.style.overflow = BODY.style.overflow == "hidden" ? "auto" : "hidden";
+    toggleBodyLock();
+});
+
+fetch("./../../assets/json/pets.json").then(resp => {
+    return resp.json();
+}).then(data => {
+    petsObjects = data;
+});
+
+const POPUP = document.querySelector("#popup");
+POPUPLINK.forEach(el => {
+    el.preventDefault;
+    el.addEventListener("click", (target) => {
+    for (let pet of petsObjects) {
+        if (pet.name == target.target.parentNode.querySelector(".card__title").innerHTML) {
+            POPUP.querySelector(".popup__img").src = pet.img;
+            POPUP.querySelector(".popup__title").innerText = pet.name;
+            POPUP.querySelector(".popup__subtitle").innerText = `${pet.type} - ${pet.breed}`;
+            POPUP.querySelector(".popup__description").innerText = pet.description;
+            POPUP.querySelector(".age span").innerText = pet.age;
+            POPUP.querySelector(".inoculations span").innerText = pet.inoculations.join(", ");
+            POPUP.querySelector(".diseases span").innerText = pet.diseases.join(", ");
+            POPUP.querySelector(".parasites span").innerText = pet.parasites.join(", ");
+            break;
         }
-        BODY.style.paddingRight = lockPaddingValue;
-        BODY.style.overflow = "hidden";
-        
-        inlock = false;
-        setTimeout(function () {
-            unlock = true;
-        }, timeout)
-    } */
-    POPUPLINK.forEach(el => el.addEventListener("click", () => {
-        BODY.style.overflow = "hidden";
-    }));
-
-    POPUPAREA.addEventListener("click", () => {
-        BODY.style.overflow = "auto";
-    });
-
-    POPUPCLOSE.addEventListener("click", () => {
-        BODY.style.overflow = "auto";
-    });
+    }
+})});

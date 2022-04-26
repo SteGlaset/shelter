@@ -18,6 +18,11 @@ html {
   font-size: 10px;
 }
 
+body {
+  padding-right: 0px;
+  overflow-x: hidden;
+}
+
 .container {
   width: 1200px;
   margin: auto;
@@ -181,7 +186,7 @@ button {
     visibility: hidden;
     opacity: 0;
     top: 0;
-    right: 0;
+    right: -320px;
     width: 320px;
     height: 823px;
     margin: 0;
@@ -196,6 +201,8 @@ button {
     width: 300px;
     justify-content: space-between;
     align-items: center;
+    opacity: 0;
+    transform: translate(0px, -100%);
   }
 
   .menu__item {
@@ -220,15 +227,18 @@ button {
     color: #292929;
   }
 
-  #menu__toggle:checked ~ .menu__box {
-    visibility: visible;
-    opacity: 1;
+  .dark__area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(41, 41, 41, 0.6);
+    opacity: 0;
+    z-index: 2;
   }
-  #menu__toggle:checked ~ .menu__btn > span > .menu__icon {
-    transform: rotate(0deg);
-  }
-  #menu__toggle:checked ~ .menu__btn.menu__btn {
-    position: fixed;
+
+  .menu__header {
+    transition-duration: 0.35s;
+    transition-delay: 0;
   }
 
   .menu__icon {
@@ -236,11 +246,38 @@ button {
   }
 
   .menu__box {
-    transition-duration: 0.25s;
+    z-index: 2;
+    transition-duration: 0.65s;
   }
 
   .menu__item {
     transition-duration: 0.25s;
+  }
+
+  .dark__area {
+    transition-duration: 0.25s;
+  }
+
+  #menu__toggle:checked ~ .dark__area {
+    opacity: 1;
+    height: 100%;
+    width: 100%;
+  }
+  #menu__toggle:checked ~ .menu__box {
+    visibility: visible;
+    opacity: 1;
+    right: 0;
+  }
+  #menu__toggle:checked ~ .menu__box .menu__header {
+    opacity: 1;
+    transform: translate(0px, 0px);
+    transition-delay: 0.35s;
+  }
+  #menu__toggle:checked ~ .menu__btn > span > .menu__icon {
+    transform: rotate(0deg);
+  }
+  #menu__toggle:checked ~ .menu__btn.menu__btn {
+    position: fixed;
   }
 }
 .house__container {
@@ -678,11 +715,13 @@ button {
 }
 
 .popup__content {
+  display: flex;
   width: 900px;
   min-height: 500px;
   background: #FAFAFA;
   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
   position: relative;
+  border-radius: 22px;
   transition: all 0.5s ease;
   opacity: 0;
   transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
@@ -706,12 +745,67 @@ button {
   height: 12px;
 }
 
+.popup__img {
+  height: 500px;
+  width: 500px;
+  border-radius: 22px;
+}
+
+.popup__text {
+  font-family: "Georgia";
+  width: 351px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 29px;
+  color: #000000;
+  letter-spacing: 0.06em;
+}
+
+.popup__title {
+  font-size: 35px;
+  line-height: 130%;
+  margin-bottom: 10px;
+}
+
+.popup__subtitle {
+  font-size: 20px;
+  line-height: 115%;
+  margin-bottom: 40px;
+}
+
+.popup__description {
+  font-size: 15px;
+  line-height: 110%;
+  margin-bottom: 40px;
+}
+
+.popup__item {
+  font-size: 15px;
+  line-height: 110%;
+  font-weight: bold;
+  margin-bottom: 12px;
+  letter-spacing: 0.1em;
+}
+.popup__item::before {
+  display: inline-block;
+  content: "";
+  width: 4px;
+  height: 4px;
+  background-color: #F1CDB3;
+  border-radius: 2px;
+  margin: 4px 10px 4px 0;
+}
+
+.text_regular {
+  font-weight: 400;
+}
+
 @media (max-width: 1280px) {
   .friends__card {
     margin: 60px 0;
   }
 
-  .friends__card:nth-child(n+1) {
+  .popup__link:nth-child(n+1) .friends__card {
     margin-right: 40.937px;
   }
 
@@ -768,8 +862,40 @@ button {
     margin: 60px 0;
   }
 
-  .friends__card:nth-last-child(-n+3) {
+  .popup__link:nth-last-child(-n+3) .friends__card {
     margin-right: 0;
+  }
+
+  .popup__content {
+    width: 630px;
+    min-height: 350px;
+  }
+
+  .popup__close {
+    left: 621px;
+  }
+
+  .popup__img {
+    height: 350px;
+    width: 350px;
+  }
+
+  .popup__text {
+    width: 260px;
+    margin: 10px;
+  }
+
+  .popup__subtitle {
+    margin-bottom: 20px;
+  }
+
+  .popup__description {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .popup__item {
+    margin-bottom: 5px;
   }
 }
 @media (max-width: 767px) {
@@ -836,21 +962,45 @@ button {
       right: 13px;
     }
   }
-  .friends__card:nth-child(n+1) {
+  .popup__link:nth-child(n+1) .friends__card {
     margin-right: auto;
   }
 
   .friends__card {
     margin: 0 33px 20px;
     justify-self: center;
+    order: 1;
   }
 
-  .friends__card:nth-last-child(-n+3) {
+  .popup__link:nth-last-child(-n+3) .friends__card {
     display: none;
   }
 
-  .friends__card {
-    order: 1;
+  .popup__content {
+    width: 240px;
+    min-height: 341px;
+  }
+
+  .popup__close {
+    left: 218px;
+  }
+
+  .popup__img {
+    display: none;
+  }
+
+  .popup__text {
+    width: 351px;
+    margin: 10px;
+  }
+
+  .popup__title,
+.popup__subtitle {
+    text-align: center;
+  }
+
+  .popup__description {
+    margin-bottom: 24px;
   }
 
   .btn__right,

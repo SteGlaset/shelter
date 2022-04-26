@@ -180,6 +180,7 @@ BTN_RIGHT.addEventListener("click", moveRight);
     const BODY = document.querySelector("html");
     const POPUPLINK = document.querySelectorAll(".popup__link");
     const POPUPCLOSE = document.querySelector(".popup__close");
+
     /* const bodyLock() {
         const lockPaddingValue = window.innerWidth - POPUP.offsetWidth + 'px';
 
@@ -195,7 +196,24 @@ BTN_RIGHT.addEventListener("click", moveRight);
             unlock = true;
         }, timeout)
     } */
-    POPUPLINK.forEach(el => el.addEventListener("click", () => {
+
+    BODY.style.paddingRight = "0px"
+    
+    let div = document.createElement('div');
+
+    div.style.overflowY = 'scroll';
+    div.style.width = '50px';
+    div.style.height = '50px';
+
+    document.body.append(div);
+    let scrollWidth = div.offsetWidth - div.clientWidth + "px";
+    div.remove();
+
+    const toggleBodyLock = () => {
+        BODY.style.paddingRight = BODY.style.paddingRight == "0px" ? scrollWidth : "0px";
+    }
+
+    POPUPLINK.forEach(el => el.addEventListener("click", (target) => {
         BODY.style.overflow = "hidden";
     }));
 
@@ -206,4 +224,48 @@ BTN_RIGHT.addEventListener("click", moveRight);
     POPUPCLOSE.addEventListener("click", () => {
         BODY.style.overflow = "auto";
     });
+
+    const BURGERLINK = document.querySelectorAll(".navigation__item_burger .nav__link");
+    const BURGERCHECKBOX = document.querySelector("#menu__toggle");
+
+    BURGERLINK.forEach(el => {
+        el.addEventListener("click", () => {
+            BURGERCHECKBOX.checked = !BURGERCHECKBOX.checked;
+        })
+
+        el.addEventListener("click", () => {
+            BODY.style.overflow = BODY.style.overflow == "hidden" ? "auto" : "hidden";
+        });
+    });
+
+    BURGERCHECKBOX.addEventListener("click", () => {
+        BODY.style.overflow = BODY.style.overflow == "hidden" ? "auto" : "hidden";
+    });
+
+    fetch("./../../assets/json/pets.json").then(resp => {
+        return resp.json();
+    }).then(data => {
+        petsObjects = data;
+    });
+
+    const POPUP = document.querySelector("#popup");
+    POPUPLINK.forEach(el => {
+        el.preventDefault;
+        el.addEventListener("click", (target) => {
+        for (let pet of petsObjects) {
+            if (pet.name == target.target.parentNode.querySelector(".card__title").innerHTML) {
+                POPUP.querySelector(".popup__img").src = pet.img;
+                POPUP.querySelector(".popup__title").innerText = pet.name;
+                POPUP.querySelector(".popup__subtitle").innerText = `${pet.type} - ${pet.breed}`;
+                POPUP.querySelector(".popup__description").innerText = pet.description;
+                POPUP.querySelector(".age span").innerText = pet.age;
+                POPUP.querySelector(".inoculations span").innerText = pet.inoculations.join(", ");
+                POPUP.querySelector(".diseases span").innerText = pet.diseases.join(", ");
+                POPUP.querySelector(".parasites span").innerText = pet.parasites.join(", ");
+                break;
+            }
+        }
+    })});
+
+
 

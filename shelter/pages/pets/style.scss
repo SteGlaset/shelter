@@ -25,7 +25,11 @@ $outline-color: #F1CDB3;
 
 html {
     font-size: 10px;
-} 
+}
+
+body {
+    padding-right: 0px;
+}
 
 .container {
     width: 1200px;
@@ -190,7 +194,7 @@ button {
         visibility: hidden;
         opacity: 0;
         top: 0;
-        right: 0;
+        right: -320px;
         width: 320px;
         height: 823px;
         margin: 0;
@@ -205,6 +209,8 @@ button {
         width: 300px;
         justify-content: space-between;
         align-items: center;
+        opacity: 0;
+        transform: translate(0px, -100%);
     }
 
     .menu__item {
@@ -214,7 +220,6 @@ button {
 
     .menu__icon {
         position: relative;
-
     }
 
     .navigation__item_burger {
@@ -230,10 +235,54 @@ button {
         color: #292929;
     }
 
+    .dark__area {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(41, 41, 41, 0.6);
+        opacity: 0;
+        z-index: 2;
+    }
+
+    .menu__header {
+        transition-duration: .35s;
+        transition-delay: 0;
+    }
+
+    .menu__icon {
+        transition-duration: .25s;
+    }
+
+    .menu__box {
+        z-index: 2;
+        transition-duration: .65s;
+    }
+
+    .menu__item {
+        transition-duration: .25s;
+    }
+
+    .dark__area {
+        transition-duration: .25s;
+    }
+
     #menu__toggle:checked {
+        &~.dark__area {
+            opacity: 1;
+            height: 100vh;
+            width: 100vw;        
+        }
+
         &~.menu__box {
             visibility: visible;
             opacity: 1;
+            right: 0;
+        }
+
+        &~.menu__box .menu__header {
+            opacity: 1;
+            transform: translate(0px, 0px);
+            transition-delay: .35s;
         }
 
         &~.menu__btn {
@@ -245,18 +294,7 @@ button {
                 position: fixed;
             }
         }
-    }
-
-    .menu__icon {
-        transition-duration: .25s;
-    }
-
-    .menu__box {
-        transition-duration: .25s;
-    }
-
-    .menu__item {
-        transition-duration: .25s;
+        
     }
 }
 
@@ -467,11 +505,13 @@ button {
 }
 
 .popup__content {
+    display: flex;
     width: 900px;
     min-height: 500px;
     background: #FAFAFA;
     box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
     position: relative;
+    border-radius: 22px;
     transition: all .5s ease;
     opacity: 0;
     transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
@@ -495,17 +535,65 @@ button {
     height: 12px;
 }
 
-.popup__text {
+.popup__img {
+    height: 500px;
+    width: 500px;
+    border-radius: 22px;
+}
 
+.popup__text {
+    font-family: 'Georgia';
+    width: 351px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 29px;
+    color: #000000;
+    letter-spacing: 0.06em;
+    
 }
 
 .popup__title {
+    font-size: 35px;
+    line-height: 130%;
+    margin-bottom: 10px;
+}
 
+.popup__subtitle {
+    font-size: 20px;
+    line-height: 115%;
+    margin-bottom: 40px;
+}
+
+.popup__description {
+    font-size: 15px;
+    line-height: 110%;
+    margin-bottom: 40px;
+}
+
+.popup__item {
+    font-size: 15px;
+    line-height: 110%;
+    font-weight: bold;
+    margin-bottom: 12px;
+    letter-spacing: 0.1em;
+    &::before {
+        display: inline-block;
+        content: "";
+        width: 4px;
+        height: 4px;
+        background-color: #F1CDB3;
+        border-radius: 2px;
+        margin: 4px 10px 4px 0;
+    }
+}
+
+.text_regular {
+    font-weight: 400;
 }
 
 @media (max-width: 1315px) {
-    .friends__card {
-        &:nth-child(n + 7) {
+    .popup__link {
+        &:nth-child(n + 7) .friends__card {
             display: none;
         }
     }
@@ -518,6 +606,38 @@ button {
 
     .friends__list{
         margin: 15px -20px 25px;
+    }
+
+    .popup__content {
+        width: 630px;
+        min-height: 350px;
+    }
+
+    .popup__close {
+        left: 621px;
+    }
+    
+    .popup__img {
+        height: 350px;
+        width: 350px;
+    }
+    
+    .popup__text {
+        width: 260px;
+        margin: 10px;    
+    }
+    
+    .popup__subtitle {
+        margin-bottom: 20px;
+    }
+    
+    .popup__description {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+    
+    .popup__item {
+        margin-bottom: 5px;
     }
 }
 
@@ -535,10 +655,37 @@ button {
         margin: 26px 0 26px;
     }
 
-    .friends__card {
-        &:nth-child(n + 4) {
+    .popup__link {
+        &:nth-child(n + 4) .friends__card {
             display: none;
         }
+    }
+
+    .popup__content {
+        width: 240px;
+        min-height: 341px;
+    }
+    
+    .popup__close {
+        left: 218px;
+    }
+
+    .popup__img {
+        display: none;
+    }
+    
+    .popup__text {
+        width: 351px;
+        margin: 10px    
+    }
+    
+    .popup__title,
+    .popup__subtitle {
+        text-align: center;
+    }
+    
+    .popup__description {
+        margin-bottom: 24px;
     }
 
     .pagination {
