@@ -151,9 +151,10 @@ button {
   }
   .navigation__list_burger {
     display: flex;
+    height: calc(100% - 105.44px);
     flex-direction: column;
     align-items: center;
-    padding-top: 155px;
+    justify-content: center;
   }
 
   .hamburger-menu {
@@ -188,7 +189,7 @@ button {
     top: 0;
     right: -320px;
     width: 320px;
-    height: 823px;
+    height: 100%;
     margin: 0;
     padding: 23px 0;
     z-index: 0;
@@ -705,6 +706,9 @@ button {
   top: 0;
   left: 0;
 }
+.popup__area:hover ~ .popup__body .popup__content .popup__close {
+  background: #FDDCC4;
+}
 
 .popup__body {
   min-height: 100%;
@@ -738,6 +742,9 @@ button {
   height: 52px;
   border: 2px solid #F1CDB3;
   border-radius: 100px;
+}
+.popup__close:hover {
+  background: #FDDCC4;
 }
 
 .popup__icon {

@@ -37,6 +37,8 @@ const CARDS = [
     <button class='card__btn'>Learn more</button>`
 ]
 
+//Carousel
+
 const createCardTemplate = () => {
     const card = document.createElement("li");
     card.classList.add("friends__card");

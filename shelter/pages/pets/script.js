@@ -37,6 +37,8 @@ const MAXPAGES = Math.trunc(48 / cardsOnScreen);
 
 for (let i = 0; i < 48; i++) {
     if (CARDScpy.length === 0) CARDScpy = [...CARDS].sort(() => Math.random() - 0.5);
+    if (window.innerWidth <= '1315' && window.innerWidth > '618') CARDScpy = CARDScpy.slice(0, 6);
+    if (window.innerWidth <= '618') CARDScpy = CARDScpy.slice(0, 3);
     cardsArr.push(CARDScpy.shift());
 }
 
