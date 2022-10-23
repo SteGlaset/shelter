@@ -1,2 +1,2 @@
 # steglaset-JSFE2022Q1
-Private repository for @steglaset
+https://steglaset.github.io/shelter/shelter/pages/main/
